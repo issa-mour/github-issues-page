@@ -1,0 +1,13 @@
+.issue_comment_icon{
+    display: flex;
+    align-items: center;
+}
+
+.octicon_comment{
+    margin-right: 5px;
+}
+
+.issue_item_comments{
+    margin-bottom: 4px;
+    color: #586069;
+}
