@@ -1,0 +1,22 @@
+.page_item{
+	line-height: 35px;
+	color: #0366d6;
+	font-size: 13px;
+    font-style: normal;
+	font-weight: 600;
+	text-decoration: none;
+	text-align: center;
+	padding: 0 12px 0 12px;
+}
+
+.page_item.disabled{
+	color: #d1d5da;
+    cursor: default;
+    background-color: #fafbfc;
+}
+
+.page_item.selected{
+	color: #fff;
+    background-color: #0366d6;
+    border-color: #0366d6;
+}
