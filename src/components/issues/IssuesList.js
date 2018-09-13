@@ -6,7 +6,15 @@ import IssueItem from './IssueItem';
 import './IssuesList.css';
 
 IssuesList.propTypes = {
-	issues: PropTypes.array.isRequired
+	issues: PropTypes.arrayOf(PropTypes.shape({
+		id: PropTypes.number.isRequired,
+		comments: PropTypes.number.isRequired,
+		state: PropTypes.oneOf(['open', 'close']).isRequired,
+		title: PropTypes.string.isRequired,
+		user: PropTypes.shape({
+		  login: PropTypes.string
+		}).isRequired
+	}))
 };
 
 function IssuesList({ issues }) {

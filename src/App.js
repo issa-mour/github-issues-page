@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import IssuesListContainer from './components/issues/IssuesListContainer';
-import Paging from './components/paging/Paging';
+import PagingContainer from './components/paging/PagingContainer';
 
 import './App.css';
 
@@ -10,7 +10,7 @@ class App extends Component {
 		return (
 			<React.Fragment>
 				<IssuesListContainer />
-				<Paging />
+				<PagingContainer />
 			</React.Fragment>
 		);
 	}
