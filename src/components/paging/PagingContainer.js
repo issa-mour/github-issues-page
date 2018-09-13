@@ -20,26 +20,27 @@ export class PagingContainer extends PureComponent {
 	}
 
 	goToPage(page) {
-		const { history } = this.props;
+		const { history, match } = this.props;
 		const { selected } = page;
-		history.push(`/?page=${selected + 1}`);
+		history.push(`/${match.params.org}/${match.params.repo}/?page=${selected + 1}`);
 	}
 
 	componentDidMount() {
-		const { getIssues } = this.props;
+		const { getIssues, match } = this.props;
 		const currPage = parse(window.location, true).query;
 		if (!empty(currPage)) {
-			getIssues(parseInt(currPage.page));
+			getIssues(match.params.org, match.params.repo, parseInt(currPage.page));
 		} else {
-			getIssues();
+			getIssues(match.params.org, match.params.repo);
 		}
 	}
 
 	componentDidUpdate(prevProps) {
+		const { getIssues, match } = this.props;
 		const prevPage = parse(prevProps.location.search, true).query;
 		const currPage = parse(window.location, true).query;
 		if (prevPage.page !== currPage.page) {
-			this.props.getIssues(parseInt(currPage.page));
+			getIssues(match.params.org, match.params.repo, parseInt(currPage.page));
 		}
 	}
 

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
 
 import IssuesListContainer from './components/issues/IssuesListContainer';
 import PagingContainer from './components/paging/PagingContainer';
@@ -11,8 +11,11 @@ class App extends Component {
 		return (
 			<Router>
 				<React.Fragment>
+					<Switch>
+						<Redirect from="/" exact to="/rails/rails" />
+					</Switch>
 					<IssuesListContainer className="app_list" />
-					<Route component={PagingContainer}/>
+					<Route path="/:org/:repo" component={PagingContainer} />
 				</React.Fragment>
 			</Router>
 		);
