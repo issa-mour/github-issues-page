@@ -21,6 +21,11 @@
 .pagination_page_link{
 display: block;
  padding: 0 12px 0 12px;
+ text-decoration: none;
+}
+
+.pagination_page_link:active{
+	color: #0366d6;
 }
 
 .pagination_page:not(.disabled):not(.active):not(.break_me):hover{
@@ -29,6 +34,10 @@ display: block;
 
 .pagination .pagination_page:last-child{
 	border-right: none;
+}
+
+.pagination_page.break_me{
+    padding: 0 12px 0 12px;
 }
 
 .pagination_page.disabled , .pagination_page.break_me{

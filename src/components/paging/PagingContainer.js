@@ -1,6 +1,8 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
-
+import parse from 'url-parse';
+import empty from 'is-empty';
+import { getIssues } from '../../actions/index';
 import ReactPaginate from 'react-paginate';
 import { getIssuesPaging } from '../../selectors/IssuesPaging';
 import './PagingContainer.css';
@@ -12,26 +14,55 @@ function mapStateToProps(state) {
 }
 
 export class PagingContainer extends PureComponent {
+	constructor(props) {
+		super(props);
+		this.goToPage = this.goToPage.bind(this);
+	}
+
+	goToPage(page) {
+		const { history } = this.props;
+		const { selected } = page;
+		history.push(`/?page=${selected + 1}`);
+	}
+
+	componentDidMount() {
+		const { getIssues } = this.props;
+		const currPage = parse(window.location, true).query;
+		if (!empty(currPage)) {
+			getIssues(parseInt(currPage.page));
+		} else {
+			getIssues();
+		}
+	}
+
+	componentDidUpdate(prevProps) {
+		const prevPage = parse(prevProps.location.search, true).query;
+		const currPage = parse(window.location, true).query;
+		if (prevPage.page !== currPage.page) {
+			this.props.getIssues(parseInt(currPage.page));
+		}
+	}
+
 	render() {
 		const { issuesPaging } = this.props;
-		const pageCount = issuesPaging.get('totalCount')/ issuesPaging.get('per_page');
-		if(pageCount <= 1){
+		const pageCount = issuesPaging.get('totalCount') / issuesPaging.get('per_page');
+		if (pageCount <= 1) {
 			return null;
 		}
 		return (
 			<ReactPaginate previousLabel={'Previous'}
 				nextLabel={'Next'}
-				forcePage={issuesPaging.get('page')}
+				forcePage={issuesPaging.get('page') - 1}
 				breakLabel={'...'}
 				breakClassName={'pagination_page break_me'}
 				pageCount={pageCount}
 				marginPagesDisplayed={2}
 				pageRangeDisplayed={5}
-				onPageChange={(this.handlePageClick)}
+				onPageChange={this.goToPage}
 				containerClassName={'pagination'}
 				pageClassName={'pagination_page'}
 				previousClassName={'pagination_page'}
-				activeClassName={'active'} 
+				activeClassName={'active'}
 				nextClassName={'pagination_page next'}
 				pageLinkClassName={'pagination_page_link'}
 				previousLinkClassName={'pagination_page_link'}
@@ -43,4 +74,5 @@ export class PagingContainer extends PureComponent {
 
 export default connect(
 	mapStateToProps,
+	{ getIssues }
 )(PagingContainer);
