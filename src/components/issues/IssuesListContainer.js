@@ -2,7 +2,6 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 
 import { getIssuesEntities } from '../../selectors/Issues';
-import { getIssues } from '../../actions/index';
 import IssuesList from './IssuesList';
 
 function mapStateToProps(state) {
@@ -12,20 +11,14 @@ function mapStateToProps(state) {
 }
 
 export class IssuesListContainer extends PureComponent {
-	componentDidMount() {
-		const { getIssues } = this.props;
-		getIssues();
-	}
-
 	render() {
-		const { issues } = this.props;
+		const { issues , className } = this.props;
 		return (
-			<IssuesList issues={issues.toJS()} />
+			<IssuesList issues={issues.toJS()} className={className} />
 		);
 	}
 }
 
 export default connect(
-	mapStateToProps,
-	{ getIssues }
+	mapStateToProps
 )(IssuesListContainer);

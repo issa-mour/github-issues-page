@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import IssueItem from './IssueItem';
+import classNames from 'classnames';
 
 import './IssuesList.css';
 
@@ -17,7 +18,8 @@ IssuesList.propTypes = {
 	}))
 };
 
-function IssuesList({ issues }) {
+function IssuesList({ className, issues }) {
+	const cls = classNames('issues_list', className);
 	const issueItems = issues.map(({id, comments, state, title, user }) => (<IssueItem
 		key={id}
 		className="issues_list_item"
@@ -27,7 +29,7 @@ function IssuesList({ issues }) {
 		openTime={'9 hours ago'}
 		openBy={user.login}
 		commentsNumber={comments} />));
-	return (<div className="issues_list">{issueItems}</div>);
+	return (<div className={cls}>{issueItems}</div>);
 }
 
 export default IssuesList;
