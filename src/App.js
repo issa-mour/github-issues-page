@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
 
-import IssuesListContainer from './components/issues/IssuesListContainer';
-import PagingContainer from './components/paging/PagingContainer';
+import IssuesPage from './components/issues/IssuesPage';
+import Issue from './components/issue/Issue';
 
 import './App.css';
 
@@ -14,8 +14,8 @@ class App extends Component {
 					<Switch>
 						<Redirect from="/" exact to="/rails/rails" />
 					</Switch>
-					<IssuesListContainer className="app_list" />
-					<Route path="/:org/:repo" component={PagingContainer} />
+					<Route path="/:org/:repo" exact component={IssuesPage} />
+					<Route path="/:org/:repo/:issueId" component={Issue} />
 				</React.Fragment>
 			</Router>
 		);
