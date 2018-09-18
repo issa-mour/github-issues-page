@@ -1,6 +1,8 @@
 // import Octokat from 'octokat';
 import parse from 'url-parse';
 import dotProp from 'dot-prop';
+import { normalize } from 'normalizr';
+import { issuesSchema } from '../Schema';
 
 export const GET_ISSUES_REQUEST = 'GET_ISSUES_REQUEST';
 export const GET_ISSUES_SUCCESS = 'GET_ISSUES_SUCCESS';
@@ -15,7 +17,8 @@ export const getIssues = (org = 'rails', repo = 'rails', page = 1) => dispatch =
 		{id: 4365, comments: 2, state: 'open', title: `fetching doesn\\'t work ${org} ${repo} ${page}`, user:{login: 'thomas1'}}
 	];
 	setTimeout(() => {
-		dispatch({type: GET_ISSUES_SUCCESS, payload: {items, totalCount, page}});	
+		const issues = normalize(items, issuesSchema);
+		dispatch({type: GET_ISSUES_SUCCESS, payload: {issues, totalCount, page}});	
 	}, 1000);
 	
 

@@ -14,7 +14,7 @@ function mapStateToProps(state) {
 export class IssuesListContainer extends PureComponent {
 	render() {
 		const { issues , className, location } = this.props;
-		const issueItems = issues.map( issue => (<IssueItem
+		const issueItems = issues.valueSeq().map( issue => (<IssueItem
 			key={issue.get('id')}
 			className="issues_list_item"
 			status={issue.get('state')}
@@ -24,7 +24,7 @@ export class IssuesListContainer extends PureComponent {
 			openBy={issue.get('user').get('login')}
 			commentsNumber={issue.get('comments')}
 			link={`${location.pathname}/${issue.get('id')}`} />));
-
+		
 		return (
 			<IssuesList className={className} >
 				{issueItems}

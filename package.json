@@ -8,6 +8,7 @@
     "immutable": "^3.8.2",
     "install": "^0.12.1",
     "is-empty": "^1.2.0",
+    "normalizr": "^3.2.4",
     "npm": "^6.4.1",
     "octokat": "^0.10.0",
     "prop-types": "^15.6.2",
