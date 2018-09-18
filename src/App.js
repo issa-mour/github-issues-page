@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
 
 import IssuesPage from './components/issues/IssuesPage';
-import Issue from './components/issue/Issue';
+import IssueContainer from './components/issue/IssueContainer';
 
 import './App.css';
 
@@ -15,7 +15,7 @@ class App extends Component {
 						<Redirect from="/" exact to="/rails/rails" />
 					</Switch>
 					<Route path="/:org/:repo" exact component={IssuesPage} />
-					<Route path="/:org/:repo/:issueId" component={Issue} />
+					<Route path="/:org/:repo/:issueId" component={IssueContainer} />
 				</React.Fragment>
 			</Router>
 		);

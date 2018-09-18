@@ -1,5 +1,9 @@
 function getIssuesEntities(state) {
-	return state.getIn(['entities', 'issues']);
+	return state.getIn(['entities', 'issues', 'byId']);
 }
 
-export { getIssuesEntities };
+function getIssue(state, { match }) {
+	return state.getIn(['entities', 'issues', 'byId', match.params.issueId.toString()]);
+}
+
+export { getIssuesEntities, getIssue };
