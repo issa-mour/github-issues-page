@@ -1,0 +1,28 @@
+.issue{
+	border: 1px solid #d1d5da;
+	width: 700px;
+	box-sizing: border-box;
+}
+
+.issue_header{
+	background-color: #f6f8fa;
+	border-bottom: 1px solid #d1d5da;
+	box-sizing: border-box;
+	padding: 10px;
+	font-size: 14px;
+	color: rgb(88, 96, 105)	;
+}
+
+.issue_header_login{
+	text-decoration: none;
+	color: inherit;
+	font-weight: bold;
+}
+
+.issue_header_login:hover{
+	text-decoration: underline;
+}
+
+.issue_header_body{
+	margin: 10px;
+}

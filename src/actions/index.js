@@ -21,8 +21,15 @@ export const getIssues = (org = 'rails', repo = 'rails', page = 1) => dispatch =
 	// const gh = new Octokat();
 
 	const totalCount = getTotalCount('https://api.gethub.com/issues?per_page=25&page=20');
-	const items = [{ id: 4366, comments: 0, state: 'open', title: `parsing doesn\\'t work ${org} ${repo} ${page}`, user: { login: 'essa.mor' } },
-		{ id: 4365, comments: 2, state: 'open', title: `fetching doesn\\'t work ${org} ${repo} ${page}`, user: { login: 'thomas1' } }
+	const items = [{
+		id: 4366,
+		body: '### Steps to reproduce\r\n\r\n```ruby\r\nredirect_to \'the.evil.site\'\r\n```\r\n\r\n### Expected behavior\r\n\r\nI am redirected to `http://my.site/the.evil.site`\r\n\r\n### Actual behavior\r\n\r\nI am redirected to `http://my.sitethe.evil.site`\r\n\r\n### System configuration\r\n**Rails version**:\r\nEvery\r\n**Ruby version**:\r\nEvery',
+		comments: 0, state: 'open', title: `parsing doesn\\'t work ${org} ${repo} ${page}`, user: { login: 'essa.mor' }
+	},
+	{
+		id: 4365, body: '### Steps to reproduce\r\n\r\n```ruby\r\nredirect_to \'the.evil.site\'\r\n```\r\n\r\n### Expected behavior\r\n\r\nI am redirected to `http://my.site/the.evil.site`\r\n\r\n### Actual behavior\r\n\r\nI am redirected to `http://my.sitethe.evil.site`\r\n\r\n### System configuration\r\n**Rails version**:\r\nEvery\r\n**Ruby version**:\r\nEvery',
+		comments: 2, state: 'open', title: `fetching doesn\\'t work ${org} ${repo} ${page}`, user: { login: 'thomas1' }
+	}
 	];
 	setTimeout(() => {
 		const issues = normalize(items, issuesSchema);
@@ -54,6 +61,20 @@ export const getIssueComments = (org = 'rails', repo = 'rails', issueId = 4365) 
 		updatedAt: null,
 		url: 'https://api.github.com/repos/rails/rails/issues/comments/421985452',
 		user: { login: 'jablan', id: 1508, nodeId: 'MDQ6VXNlcjE1MDg=', avatarUrl: 'https://avatars1.githubusercontent.com/u/1508?v=4' }
+	},
+	{
+		authorAssociation: 'NONE',
+		body: 'body body body',
+		createdAt: null,
+		html: () => { },
+		htmlUrl: 'https://github.com/rails/rails/issues/33905#issuecomment-421985452',
+		id: 421985453,
+		issue: () => { },
+		issueUrl: 'https://api.github.com/repos/rails/rails/issues/33905',
+		nodeId: 'MDEyOklzc3VlQ29tbWVudDQyMTk4NTQ1Mg==',
+		updatedAt: null,
+		url: 'https://api.github.com/repos/rails/rails/issues/comments/421985452',
+		user: { login: 'jablan', id: 1508, nodeId: 'MDQ6VXNlcjE1MDg=', avatarUrl: 'https://avatars1.githubusercontent.com/u/1508?v=4' }
 	}];
 
 	setTimeout(() => {
@@ -73,7 +94,10 @@ export const getIssueComments = (org = 'rails', repo = 'rails', issueId = 4365) 
 export const getIssue = (org = 'rails', repo = 'rails', issueId = 4365) => dispatch => {
 	dispatch({ type: GET_ISSUE_REQUEST });
 
-	const item = { id: 4365, comments: 2, state: 'open', title: `fetching doesn\\'t work ${org} ${repo}`, user: { login: 'thomas1' } };
+	const item = {
+		id: 4365, body: '### Steps to reproduce\r\n\r\n```ruby\r\nredirect_to \'the.evil.site\'\r\n```\r\n\r\n### Expected behavior\r\n\r\nI am redirected to `http://my.site/the.evil.site`\r\n\r\n### Actual behavior\r\n\r\nI am redirected to `http://my.sitethe.evil.site`\r\n\r\n### System configuration\r\n**Rails version**:\r\nEvery\r\n**Ruby version**:\r\nEvery',
+		comments: 2, state: 'open', title: `fetching doesn\\'t work ${org} ${repo}`, user: { login: 'thomas1' }
+	};
 
 	setTimeout(() => {
 		dispatch({ type: GET_ISSUE_SUCCESS, payload: { item, issueId } });
