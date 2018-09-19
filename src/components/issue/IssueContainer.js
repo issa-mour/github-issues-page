@@ -27,9 +27,7 @@ class IssueContainer extends PureComponent {
 		}
 
 		return (
-			<div>
-				<Issue login={issue.get('user').get('login')} body={issue.get('body')} />
-			</div>
+			<Issue login={issue.get('user').get('login')} body={issue.get('body')} />
 		);
 	}
 }
