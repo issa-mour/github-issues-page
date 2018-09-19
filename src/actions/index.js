@@ -18,8 +18,7 @@ export const GET_ISSUE_FAILURE = 'GET_ISSUE_FAILURE';
 
 export const getIssues = (org = 'rails', repo = 'rails', page = 1) => dispatch => {
 	dispatch({ type: GET_ISSUES_REQUEST });
-	// const gh = new Octokat();
-
+	
 	const totalCount = getTotalCount('https://api.gethub.com/issues?per_page=25&page=20');
 	const items = [{
 		id: 4366,
@@ -37,6 +36,7 @@ export const getIssues = (org = 'rails', repo = 'rails', page = 1) => dispatch =
 	}, 1000);
 
 
+	// const gh = new Octokat();
 	// gh.repos(org, repo).issues.fetch({per_page:25, state: 'open'})
 	// 	.then(result => {
 	// 		const { items , lastPageUrl } = result;
