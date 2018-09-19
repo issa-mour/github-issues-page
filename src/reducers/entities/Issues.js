@@ -6,7 +6,7 @@ const INITIAL_STATE = fromJS({ byId: {} });
 function mergeIssues(state, payload) {
 	const p = fromJS(payload);
 	const issues = p.getIn(['issues', 'entities', 'issues'], fromJS({}));
-	return state.mergeDeep({ 'byId': issues });
+	return state.update('byId', () => issues);
 }
 
 function updateCommentsIds(state, payload) {

@@ -6,7 +6,7 @@ const INITIAL_STATE = fromJS({ byId: {} });
 function mergeComments(state, payload) {
 	const p = fromJS(payload);
 	const comments = p.getIn(['comments', 'entities', 'comments'], fromJS({}));
-	return state.mergeDeep({ 'byId': comments });
+	return state.update('byId', () => comments );
 }
 
 export default function (state = INITIAL_STATE, { type, payload }) {

@@ -25,4 +25,5 @@
 
 .issue_header_body{
 	margin: 10px;
+	word-wrap: break-word;
 }
