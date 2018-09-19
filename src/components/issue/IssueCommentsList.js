@@ -14,7 +14,7 @@ IssueCommentsList.propTypes = {
 
 function IssueCommentsList({ comments }) {
 	const issueComments = comments.map(({ id, body, user }) => <Issue className="issue_comments_list_item" key={id} body={body} login={user.login} />);
-	return {issueComments};
+	return <React.Fragment>{issueComments}</React.Fragment>;
 }
 
 export default IssueCommentsList;
