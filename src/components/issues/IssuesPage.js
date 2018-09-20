@@ -1,7 +1,7 @@
 import React from 'react';
 
-import IssuesListContainer from './IssuesListContainer';
-import PagingContainer from '../paging/PagingContainer';
+import IssuesListContainer from '../../containers/issues/IssuesListContainer';
+import PagingContainer from '../../containers/paging/PagingContainer';
 
 function IssuesPage(props) {
 	return (

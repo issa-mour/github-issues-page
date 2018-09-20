@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import IssueItem from './IssueItem';
+import IssueItem from '../../components/issues/IssueItem';
 import { getIssuesEntities } from '../../selectors/Issues';
-import IssuesList from './IssuesList';
+import IssuesList from '../../components/issues/IssuesList';
 
 function mapStateToProps(state) {
 	return {

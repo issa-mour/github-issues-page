@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { getIssueComments } from '../../actions/index';
+import { getIssueComments } from '../../actions';
 import { getIssueComments as getIssueCommentsSelector } from '../../selectors/Issues';
-import IssueCommentsList from './IssueCommentsList';
+import IssueCommentsList from '../../components/issue/IssueCommentsList';
 
 function mapStateToProps(state, props) {
 	return {

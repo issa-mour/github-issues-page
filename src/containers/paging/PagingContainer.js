@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import parse from 'url-parse';
 import empty from 'is-empty';
-import { getIssues } from '../../actions/index';
+import { getIssues } from '../../actions';
 import ReactPaginate from 'react-paginate';
 import { getIssuesPaging } from '../../selectors/IssuesPaging';
 import './PagingContainer.css';

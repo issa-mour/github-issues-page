@@ -1,7 +1,7 @@
 import React from 'react';
 
-import IssueContainer from './IssueContainer';
-import IssueCommentsListContainer from './IssueCommentsListContainer';
+import IssueContainer from '../../containers/issue/IssueContainer';
+import IssueCommentsListContainer from '../../containers/issue/IssueCommentsListContainer';
 
 function IssuePage(props) {
 	return (
