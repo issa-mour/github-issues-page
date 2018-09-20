@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
 
-import IssuesPage from './components/issues/IssuesPage';
-import IssuePage from './components/issue/IssuePage';
+import IssuesPage from './pages/issues/IssuesPage';
+import IssuePage from './pages/issue/IssuePage';
 import ScrollToTop from './components/ScrollToTop';
 
 import './App.css';
