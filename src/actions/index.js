@@ -105,7 +105,7 @@ export const getIssue = (org = 'rails', repo = 'rails', issueId = 4365) => dispa
 	// }, 1000);
 
 	const gh = new Octokat();
-	gh.repos(org, repo).issues(33905).fetch()
+	gh.repos(org, repo).issues(issueId).fetch()
 		.then(item => {
 			dispatch({ type: GET_ISSUE_SUCCESS, payload: {item,issueId} });
 		});

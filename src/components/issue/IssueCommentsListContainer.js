@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import { getIssueComments } from '../../actions/index';
@@ -11,7 +11,7 @@ function mapStateToProps(state, props) {
 	};
 }
 
-class IssueCommentsListContainer extends PureComponent {
+class IssueCommentsListContainer extends Component {
 	componentDidMount() {
 		const { match, getIssueComments } = this.props;
 		getIssueComments(match.params.org, match.params.repo, match.params.issueId);

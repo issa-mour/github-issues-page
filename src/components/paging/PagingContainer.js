@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import parse from 'url-parse';
 import empty from 'is-empty';
@@ -13,7 +13,7 @@ function mapStateToProps(state) {
 	};
 }
 
-export class PagingContainer extends PureComponent {
+export class PagingContainer extends Component {
 	constructor(props) {
 		super(props);
 		this.goToPage = this.goToPage.bind(this);
