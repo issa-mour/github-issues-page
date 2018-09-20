@@ -1,19 +1,20 @@
 import { createSelector } from 'reselect';
-import { fromJS } from 'immutable';
 
-function getIssuesEntities(state) {
-	return state.getIn(['entities', 'issues', 'byId']);
-}
+const issuesSelector = state => state.getIn(['entities', 'issues', 'byId']);
+const issuesIdsSelector = state => state.getIn(['entities', 'issues', 'allIds']);
+const getIssuesEntities = createSelector(issuesSelector,
+	issuesIdsSelector,
+	(issues, issuesIds) => issuesIds.map(id => issues.get(id.toString())));
 
 function getIssue(state, { match }) {
 	return state.getIn(['entities', 'issues', 'byId', match.params.issueId.toString()]);
 }
 
-const issueCommentIdsSelector = (state, { match }) => state.getIn(['entities', 'issues', 'byId', match.params.issueId.toString(), 'commentsIds']);
+const commentIdsSelector = state => state.getIn(['entities', 'comments', 'allIds']);
 const commentsSelector = state => state.getIn(['entities', 'comments', 'byId']);
 const getIssueComments = createSelector(
-	issueCommentIdsSelector,
+	commentIdsSelector,
 	commentsSelector,
-	(commentsIds, comments) => commentsIds !== undefined ? commentsIds.map(v => comments.get(v.toString())) : fromJS([]));
+	(commentsIds, comments) => commentsIds.map(v => comments.get(v.toString())));
 
 export { getIssuesEntities, getIssue, getIssueComments };

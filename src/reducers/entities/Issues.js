@@ -1,12 +1,13 @@
 import { fromJS } from 'immutable';
 
 import { GET_ISSUES_SUCCESS, GET_COMMENTS_SUCCESS, GET_ISSUE_SUCCESS } from '../../actions/index';
-const INITIAL_STATE = fromJS({ byId: {} });
+const INITIAL_STATE = fromJS({ byId: {}, allIds: [] });
 
 function mergeIssues(state, payload) {
 	const p = fromJS(payload);
 	const issues = p.getIn(['issues', 'entities', 'issues'], fromJS({}));
-	return state.update('byId', () => issues);
+	const allIds = p.getIn(['issues', 'result'], fromJS([]));
+	return state.update('byId', () => issues).update('allIds', () => allIds);
 }
 
 function updateCommentsIds(state, payload) {
@@ -17,7 +18,8 @@ function updateCommentsIds(state, payload) {
 
 function mergeIssue(state, payload) {
 	const p = fromJS(payload);
-	return state.updateIn(['byId', p.get('issueId').toString()], () => p.get('item'));
+	return state.updateIn(['byId', p.get('issueId').toString()], () => p.get('item'))
+		.update('allIds', _allIds => _allIds.merge(p.get('issueId')));
 }
 
 export default function (state = INITIAL_STATE, { type, payload }) {
