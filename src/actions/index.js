@@ -16,6 +16,9 @@ export const GET_ISSUE_REQUEST = 'GET_ISSUE_REQUEST';
 export const GET_ISSUE_SUCCESS = 'GET_ISSUE_SUCCESS';
 export const GET_ISSUE_FAILURE = 'GET_ISSUE_FAILURE';
 
+export const CREATE_NEW_ISSUE = 'CREATE_NEW_ISSUE';
+export const RESET_REDIRECT = 'RESET_REDIRECT';
+
 export const getIssues = (org = 'rails', repo = 'rails', page = 1) => dispatch => {
 	dispatch({ type: GET_ISSUES_REQUEST });
 
@@ -107,9 +110,13 @@ export const getIssue = (org = 'rails', repo = 'rails', issueId = 4365) => dispa
 	const gh = new Octokat();
 	gh.repos(org, repo).issues(issueId).fetch()
 		.then(item => {
-			dispatch({ type: GET_ISSUE_SUCCESS, payload: {item,issueId} });
+			dispatch({ type: GET_ISSUE_SUCCESS, payload: { item, issueId } });
 		});
 };
+
+export const createIssue = (values) => ({ type: CREATE_NEW_ISSUE, payload: values });
+
+export const resetRedirect = () => ({ type: RESET_REDIRECT });
 
 const getTotalCount = lastPageUrl => {
 	const url = parse(lastPageUrl, true);

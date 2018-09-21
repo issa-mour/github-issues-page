@@ -26,7 +26,7 @@ export function IssuesListContainer (props){
 		link={`${pathname}${issue.get('number')}`} />));
 		
 	return (
-		<IssuesList className={className} >
+		<IssuesList className={className}  addLink={`${pathname}new`}>
 			{issueItems}
 		</IssuesList>
 	);
