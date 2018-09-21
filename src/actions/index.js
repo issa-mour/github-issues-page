@@ -21,6 +21,7 @@ export const RESET_REDIRECT = 'RESET_REDIRECT';
 
 export const getIssues = (org = 'rails', repo = 'rails', page = 1) => dispatch => {
 	dispatch({ type: GET_ISSUES_REQUEST });
+	dispatch({ type: GET_ISSUES_SUCCESS, payload: {} });
 
 	// const totalCount = getTotalCount('https://api.gethub.com/issues?per_page=25&page=20');
 	// const items = [{
