@@ -23,31 +23,31 @@ export const getIssues = (org = 'rails', repo = 'rails', page = 1) => dispatch =
 	dispatch({ type: GET_ISSUES_REQUEST });
 	dispatch({ type: GET_ISSUES_SUCCESS, payload: {} });
 
-	const totalCount = getTotalCount('https://api.gethub.com/issues?per_page=25&page=20');
-	const items = [{
-		id: 4366, number: 4366,
-		body: '### Steps to reproduce\r\n\r\n```ruby\r\nredirect_to \'the.evil.site\'\r\n```\r\n\r\n### Expected behavior\r\n\r\nI am redirected to `http://my.site/the.evil.site`\r\n\r\n### Actual behavior\r\n\r\nI am redirected to `http://my.sitethe.evil.site`\r\n\r\n### System configuration\r\n**Rails version**:\r\nEvery\r\n**Ruby version**:\r\nEvery',
-		comments: 0, state: 'open', title: `parsing doesn\\'t work ${org} ${repo} ${page}`, user: { login: 'essa.mor' }
-	},
-	{
-		id: 4365,  number: 4365, body: '### Steps to reproduce\r\n\r\n```ruby\r\nredirect_to \'the.evil.site\'\r\n```\r\n\r\n### Expected behavior\r\n\r\nI am redirected to `http://my.site/the.evil.site`\r\n\r\n### Actual behavior\r\n\r\nI am redirected to `http://my.sitethe.evil.site`\r\n\r\n### System configuration\r\n**Rails version**:\r\nEvery\r\n**Ruby version**:\r\nEvery',
-		comments: 2, state: 'open', title: `fetching doesn\\'t work ${org} ${repo} ${page}`, user: { login: 'thomas1' }
-	}
-	];
-	setTimeout(() => {
-		const issues = normalize(items, issuesSchema);
-		dispatch({ type: GET_ISSUES_SUCCESS, payload: { issues, totalCount, page } });
-	}, 10000);
+	// const totalCount = getTotalCount('https://api.gethub.com/issues?per_page=25&page=20');
+	// const items = [{
+	// 	id: 4366, number: 4366,
+	// 	body: '### Steps to reproduce\r\n\r\n```ruby\r\nredirect_to \'the.evil.site\'\r\n```\r\n\r\n### Expected behavior\r\n\r\nI am redirected to `http://my.site/the.evil.site`\r\n\r\n### Actual behavior\r\n\r\nI am redirected to `http://my.sitethe.evil.site`\r\n\r\n### System configuration\r\n**Rails version**:\r\nEvery\r\n**Ruby version**:\r\nEvery',
+	// 	comments: 0, state: 'open', title: `parsing doesn\\'t work ${org} ${repo} ${page}`, user: { login: 'essa.mor' }
+	// },
+	// {
+	// 	id: 4365,  number: 4365, body: '### Steps to reproduce\r\n\r\n```ruby\r\nredirect_to \'the.evil.site\'\r\n```\r\n\r\n### Expected behavior\r\n\r\nI am redirected to `http://my.site/the.evil.site`\r\n\r\n### Actual behavior\r\n\r\nI am redirected to `http://my.sitethe.evil.site`\r\n\r\n### System configuration\r\n**Rails version**:\r\nEvery\r\n**Ruby version**:\r\nEvery',
+	// 	comments: 2, state: 'open', title: `fetching doesn\\'t work ${org} ${repo} ${page}`, user: { login: 'thomas1' }
+	// }
+	// ];
+	// setTimeout(() => {
+	// 	const issues = normalize(items, issuesSchema);
+	// 	dispatch({ type: GET_ISSUES_SUCCESS, payload: { issues, totalCount, page } });
+	// }, 1000);
 
 
-	// const gh = new Octokat();
-	// gh.repos(org, repo).issues.fetch({ per_page: 25, state: 'open', page })
-	// 	.then(result => {
-	// 		const { items, lastPageUrl } = result;
-	// 		const issues = normalize(items, issuesSchema);
-	// 		const totalCount = getTotalCount(lastPageUrl);
-	// 		dispatch({ type: GET_ISSUES_SUCCESS, payload: { issues, totalCount, page } });
-	// 	});
+	const gh = new Octokat();
+	gh.repos(org, repo).issues.fetch({ per_page: 25, state: 'open', page })
+		.then(result => {
+			const { items, lastPageUrl } = result;
+			const issues = normalize(items, issuesSchema);
+			const totalCount = getTotalCount(lastPageUrl);
+			dispatch({ type: GET_ISSUES_SUCCESS, payload: { issues, totalCount, page } });
+		});
 };
 
 export const getIssueComments = (org = 'rails', repo = 'rails', issueId = 4365) => dispatch => {
