@@ -19,7 +19,7 @@ function updateCommentsIds(state, payload) {
 function mergeIssue(state, payload) {
 	const p = fromJS(payload);
 	return state.updateIn(['byId', p.get('issueId').toString()], () => p.get('item'))
-		.update('allIds', _allIds => _allIds.merge(p.get('issueId')));
+		.update('allIds', _allIds => _allIds.merge(fromJS([parseInt(p.get('issueId'))])));
 }
 
 export default function (state = INITIAL_STATE, { type, payload }) {
