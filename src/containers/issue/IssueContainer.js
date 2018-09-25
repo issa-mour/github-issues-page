@@ -27,7 +27,7 @@ class IssueContainer extends Component {
 		}
 
 		return (
-			<Issue login={issue.get('user').get('login')} body={issue.get('body')} />
+			<Issue login={issue.get('user').get('login')} body={issue.get('body')} createdAt={issue.get('createdAt')} />
 		);
 	}
 }

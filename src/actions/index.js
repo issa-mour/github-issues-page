@@ -57,7 +57,7 @@ export const getIssueComments = (org = 'rails', repo = 'rails', issueId = 4365) 
 	// const items = [{
 	// 	authorAssociation: 'NONE',
 	// 	body: 'body body body',
-	// 	createdAt: null,
+	// 	createdAt: '2018-09-24T18:39:49.000Z',
 	// 	html: () => { },
 	// 	htmlUrl: 'https://github.com/rails/rails/issues/33905#issuecomment-421985452',
 	// 	id: 421985452,
@@ -71,7 +71,7 @@ export const getIssueComments = (org = 'rails', repo = 'rails', issueId = 4365) 
 	// {
 	// 	authorAssociation: 'NONE',
 	// 	body: 'body body body',
-	// 	createdAt: null,
+	// 	createdAt: '2018-09-24T20:20:11.000Z',
 	// 	html: () => { },
 	// 	htmlUrl: 'https://github.com/rails/rails/issues/33905#issuecomment-421985452',
 	// 	id: 421985453,
@@ -101,7 +101,7 @@ export const getIssue = (org = 'rails', repo = 'rails', issueId = 4365) => dispa
 	dispatch({ type: GET_ISSUE_REQUEST });
 
 	// const item = {
-	// 	id: 4365, number: 4365, createdAt: '2018-09-25T07:37:23.000Z',
+	// 	id: 4365, number: 4365, createdAt: '2018-09-24T17:39:49.000Z',
 	//  body: '### Steps to reproduce\r\n\r\n```ruby\r\nredirect_to \'the.evil.site\'\r\n```\r\n\r\n### Expected behavior\r\n\r\nI am redirected to `http://my.site/the.evil.site`\r\n\r\n### Actual behavior\r\n\r\nI am redirected to `http://my.sitethe.evil.site`\r\n\r\n### System configuration\r\n**Rails version**:\r\nEvery\r\n**Ruby version**:\r\nEvery',
 	// 	comments: 2, state: 'open', title: `fetching doesn\\'t work ${org} ${repo}`, user: { login: 'thomas1' }
 	// };
