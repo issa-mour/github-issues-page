@@ -25,12 +25,13 @@ export const getIssues = (org = 'rails', repo = 'rails', page = 1) => dispatch =
 
 	// const totalCount = getTotalCount('https://api.gethub.com/issues?per_page=25&page=20');
 	// const items = [{
-	// 	id: 4366, number: 4366,
+	// 	id: 4366, number: 4366, createdAt: '2018-09-25T07:37:23.000Z',
 	// 	body: '### Steps to reproduce\r\n\r\n```ruby\r\nredirect_to \'the.evil.site\'\r\n```\r\n\r\n### Expected behavior\r\n\r\nI am redirected to `http://my.site/the.evil.site`\r\n\r\n### Actual behavior\r\n\r\nI am redirected to `http://my.sitethe.evil.site`\r\n\r\n### System configuration\r\n**Rails version**:\r\nEvery\r\n**Ruby version**:\r\nEvery',
 	// 	comments: 0, state: 'open', title: `parsing doesn\\'t work ${org} ${repo} ${page}`, user: { login: 'essa.mor' }
 	// },
 	// {
-	// 	id: 4365,  number: 4365, body: '### Steps to reproduce\r\n\r\n```ruby\r\nredirect_to \'the.evil.site\'\r\n```\r\n\r\n### Expected behavior\r\n\r\nI am redirected to `http://my.site/the.evil.site`\r\n\r\n### Actual behavior\r\n\r\nI am redirected to `http://my.sitethe.evil.site`\r\n\r\n### System configuration\r\n**Rails version**:\r\nEvery\r\n**Ruby version**:\r\nEvery',
+	// 	id: 4365,  number: 4365, createdAt: '2018-09-19T19:57:20.000Z',
+	// 	body: '### Steps to reproduce\r\n\r\n```ruby\r\nredirect_to \'the.evil.site\'\r\n```\r\n\r\n### Expected behavior\r\n\r\nI am redirected to `http://my.site/the.evil.site`\r\n\r\n### Actual behavior\r\n\r\nI am redirected to `http://my.sitethe.evil.site`\r\n\r\n### System configuration\r\n**Rails version**:\r\nEvery\r\n**Ruby version**:\r\nEvery',
 	// 	comments: 2, state: 'open', title: `fetching doesn\\'t work ${org} ${repo} ${page}`, user: { login: 'thomas1' }
 	// }
 	// ];
@@ -100,7 +101,8 @@ export const getIssue = (org = 'rails', repo = 'rails', issueId = 4365) => dispa
 	dispatch({ type: GET_ISSUE_REQUEST });
 
 	// const item = {
-	// 	id: 4365, number: 4365, body: '### Steps to reproduce\r\n\r\n```ruby\r\nredirect_to \'the.evil.site\'\r\n```\r\n\r\n### Expected behavior\r\n\r\nI am redirected to `http://my.site/the.evil.site`\r\n\r\n### Actual behavior\r\n\r\nI am redirected to `http://my.sitethe.evil.site`\r\n\r\n### System configuration\r\n**Rails version**:\r\nEvery\r\n**Ruby version**:\r\nEvery',
+	// 	id: 4365, number: 4365, createdAt: '2018-09-25T07:37:23.000Z',
+	//  body: '### Steps to reproduce\r\n\r\n```ruby\r\nredirect_to \'the.evil.site\'\r\n```\r\n\r\n### Expected behavior\r\n\r\nI am redirected to `http://my.site/the.evil.site`\r\n\r\n### Actual behavior\r\n\r\nI am redirected to `http://my.sitethe.evil.site`\r\n\r\n### System configuration\r\n**Rails version**:\r\nEvery\r\n**Ruby version**:\r\nEvery',
 	// 	comments: 2, state: 'open', title: `fetching doesn\\'t work ${org} ${repo}`, user: { login: 'thomas1' }
 	// };
 

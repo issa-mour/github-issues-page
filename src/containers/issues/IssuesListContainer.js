@@ -20,7 +20,7 @@ export function IssuesListContainer (props){
 		status={issue.get('state')}
 		title={issue.get('title')}
 		id={issue.get('number')}
-		openTime={'9 hours ago'}
+		createdAt={issue.get('createdAt')}
 		openBy={issue.get('user').get('login')}
 		commentsNumber={issue.get('comments')}
 		link={`${pathname}${issue.get('number')}`} />));
