@@ -16,10 +16,10 @@ class App extends Component {
 				<ScrollToTop>
 					<IntlRelativeFormatContext.Provider value={intlRelativeFormat}>
 						<Switch>
-							<Redirect from="/" exact to="/github-issues-page/rails/rails" />
-							<Route path="/github-issues-page/:org/:repo" exact component={IssuesPage} />
-							<Route path="/github-issues-page/:org/:repo/new" component={NewIssueContainer} />
-							<Route path="/github-issues-page/:org/:repo/:issueId" exact component={IssuePage} />
+							<Redirect from="/" exact to="/rails/rails" />
+							<Route path="/:org/:repo" exact component={IssuesPage} />
+							<Route path="/:org/:repo/new" component={NewIssueContainer} />
+							<Route path="/:org/:repo/:issueId" exact component={IssuePage} />
 						</Switch>
 					</IntlRelativeFormatContext.Provider>
 				</ScrollToTop>
