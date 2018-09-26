@@ -1,6 +1,6 @@
 import Octokat from 'octokat';
 import parse from 'url-parse';
-import dotProp from 'dot-prop';
+import { get } from 'dot-prop-immutable';
 import { normalize } from 'normalizr';
 import { issuesSchema, commentsSchema } from '../Schema';
 
@@ -123,7 +123,7 @@ export const resetRedirect = () => ({ type: RESET_REDIRECT });
 
 const getTotalCount = lastPageUrl => {
 	const url = parse(lastPageUrl, true);
-	const perPage = dotProp.get(url, 'query.per_page', 0);
-	const page = dotProp.get(url, 'query.page', 0);
+	const perPage = get(url, 'query.per_page', 0);
+	const page = get(url, 'query.page', 0);
 	return page * perPage;
 };
