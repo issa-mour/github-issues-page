@@ -44,9 +44,9 @@ export const getIssues = (org = 'rails', repo = 'rails', page = 1) => dispatch =
 	const gh = new Octokat();
 	gh.repos(org, repo).issues.fetch({ per_page: 25, state: 'open', page })
 		.then(result => {
-			const { items, lastPageUrl } = result;
+			const { items, lastPageUrl, url } = result;
 			const issues = normalize(items, issuesSchema);
-			const totalCount = getTotalCount(lastPageUrl);
+			const totalCount = getTotalCount(lastPageUrl || url);
 			dispatch({ type: GET_ISSUES_SUCCESS, payload: { issues, totalCount, page } });
 		});
 };
