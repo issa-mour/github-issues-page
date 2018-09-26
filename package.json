@@ -1,10 +1,11 @@
 {
   "name": "github-issues-page",
+  "homepage": "http://issa-mour.github.io/github-issues-page",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "classnames": "^2.2.6",
-    "dot-prop": "^4.2.0",
+    "dot-prop-immutable": "^1.4.0",
     "immutable": "^3.8.2",
     "install": "^0.12.1",
     "intl-relativeformat": "^2.1.0",
@@ -31,9 +32,12 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "devDependencies": {
+    "gh-pages": "^2.0.0",
     "redux-devtools-extension": "^2.13.5"
   }
 }
