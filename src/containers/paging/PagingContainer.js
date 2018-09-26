@@ -22,7 +22,7 @@ export class PagingContainer extends Component {
 	goToPage(page) {
 		const { history, match } = this.props;
 		const { selected } = page;
-		history.push(`/${match.params.org}/${match.params.repo}/?page=${selected + 1}`);
+		history.push(`/github-issues-page/${match.params.org}/${match.params.repo}/?page=${selected + 1}`);
 	}
 
 	componentDidMount() {

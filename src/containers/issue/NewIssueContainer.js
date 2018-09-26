@@ -21,7 +21,7 @@ class NewIssueContainer extends Component {
 		const { createIssue, redirect, match } = this.props;
 		const { org, repo } = match.params;
 		if(redirect){
-			return <Redirect to={`/${org}/${repo}`} />;
+			return <Redirect to={`/github-issues-page/${org}/${repo}`} />;
 		}
 		return (
 			<NewIssue onSubmit={createIssue} initialValues={{
