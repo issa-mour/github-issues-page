@@ -4,12 +4,14 @@
         "es6": true
     },
     "extends": "eslint:recommended",
+    "parser": "babel-eslint",
     "parserOptions": {
         "ecmaFeatures": {
             "jsx": true
         },
         "ecmaVersion": 2018,
-        "sourceType": "module"
+        "sourceType": "module",
+        "allowImportExportEverywhere": true
     },
     "plugins": [
         "react"
@@ -32,6 +34,7 @@
         "react/jsx-uses-vars": "error",
         "no-console": "off",
         "no-mixed-spaces-and-tabs": "off",
-        "no-undef": "off"
+        "no-undef": "off",
+        "strict": 0
     }
 }
